@@ -1,0 +1,106 @@
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MTK PINTAR</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f0f0f0;
+    }
+    h1, h2 {
+      color: #333;
+    }
+    section {
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+    input[type="number"] {
+      padding: 5px;
+      margin: 5px;
+      width: 100px;
+    }
+    button {
+      padding: 5px 10px;
+      margin: 5px;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+    p {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>MTK pintar Web Sederhana</h1>
+
+  <section>
+    <h2>Persegi</h2>
+    <input type="number" id="sisiPersegi" placeholder="Sisi">
+    <button onclick="hitungPersegi()">Hitung</button>
+    <p id="hasilPersegi"></p>
+  </section>
+
+  <section>
+    <h2>Persegi Panjang</h2>
+    <input type="number" id="panjangPP" placeholder="Panjang">
+    <input type="number" id="lebarPP" placeholder="Lebar">
+    <button onclick="hitungPersegiPanjang()">Hitung</button>
+    <p id="hasilPP"></p>
+  </section>
+
+  <section>
+    <h2>Perhitungan Dasar</h2>
+    <input type="number" id="angka1" placeholder="Angka 1">
+    <input type="number" id="angka2" placeholder="Angka 2"><br>
+    <button onclick="hitungDasar('+')">+</button>
+    <button onclick="hitungDasar('-')">−</button>
+    <button onclick="hitungDasar('*')">×</button>
+    <button onclick="hitungDasar('/')">÷</button>
+    <p id="hasilDasar"></p>
+  </section>
+
+  <script>
+    function hitungPersegi() {
+      const sisi = parseFloat(document.getElementById("sisiPersegi").value);
+      if (!isNaN(sisi)) {
+        const luas = sisi * sisi;
+        const keliling = 4 * sisi;
+        document.getElementById("hasilPersegi").innerText = `Luas: ${luas}, Keliling: ${keliling}`;
+      }
+    }
+
+    function hitungPersegiPanjang() {
+      const panjang = parseFloat(document.getElementById("panjangPP").value);
+      const lebar = parseFloat(document.getElementById("lebarPP").value);
+      if (!isNaN(panjang) && !isNaN(lebar)) {
+        const luas = panjang * lebar;
+        const keliling = 2 * (panjang + lebar);
+        document.getElementById("hasilPP").innerText = `Luas: ${luas}, Keliling: ${keliling}`;
+      }
+    }
+
+    function hitungDasar(operasi) {
+      const a = parseFloat(document.getElementById("angka1").value);
+      const b = parseFloat(document.getElementById("angka2").value);
+      let hasil;
+      if (isNaN(a) || isNaN(b)) return;
+      switch (operasi) {
+        case '+': hasil = a + b; break;
+        case '-': hasil = a - b; break;
+        case '*': hasil = a * b; break;
+        case '/': hasil = b !== 0 ? a / b : 'Tidak bisa dibagi nol'; break;
+      }
+      document.getElementById("hasilDasar").innerText = `Hasil: ${hasil}`;
+    }
+  </script>
+
+</body>
+</html>
