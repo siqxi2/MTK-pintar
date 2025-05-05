@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kalkulator Matematika Lengkap</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f0f0f0; padding: 20px; }
+    h1, h2 { color: #333; }
+    section { background: #fff; padding: 15px; margin-bottom: 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    input, select, button { margin: 5px 0; padding: 8px; font-size: 16px; }
+    .hasil { font-weight: bold; color: #007b00; margin-top: 10px; }
+  </style>
+</head>
+<body>
+
+  <h1>Kalkulator Matematika</h1>
+
+  <!-- Penjumlahan -->
+  <section>
+    <h2>Penjumlahan</h2>
+    <input type="number" id="pen1" placeholder="Angka 1">
+    <input type="number" id="pen2" placeholder="Angka 2">
+    <button onclick="jumlah()">Hitung</button>
+    <div class="hasil" id="hasilPenjumlahan"></div>
+  </section>
+
+  <!-- Persegi Panjang -->
+  <section>
+    <h2>Luas &amp; Keliling Persegi Panjang</h2>
+    <input type="number" id="panjang" placeholder="Panjang">
+    <input type="number" id="lebar" placeholder="Lebar">
+    <button onclick="hitungPersegiPanjang()">Hitung</button>
+    <div class="hasil" id="hasilLuasKeliling"></div>
+  </section>
+
+  <!-- Segitiga -->
+  <section>
+    <h2>Luas &amp; Keliling Segitiga</h2>
+    <input type="number" id="alas" placeholder="Alas">
+    <input type="number" id="tinggi" placeholder="Tinggi">
+    <input type="number" id="sisi1" placeholder="Sisi 1">
+    <input type="number" id="sisi2" placeholder="Sisi 2">
+    <input type="number" id="sisi3" placeholder="Sisi 3">
+    <button onclick="hitungSegitiga()">Hitung</button>
+    <div class="hasil" id="hasilSegitiga"></div>
+  </section>
+
+  <!-- Lingkaran -->
+  <section>
+    <h2>Luas &amp; Keliling Lingkaran</h2>
+    <input type="number" id="jari" placeholder="Jari-jari">
+    <button onclick="hitungLingkaran()">Hitung</button>
+    <div class="hasil" id="hasilLingkaran"></div>
+  </section>
+
+  <!-- Volume Kubus -->
+  <section>
+    <h2>Volume Kubus</h2>
+    <input type="number" id="sisi" placeholder="Sisi">
+    <button onclick="volumeKubus()">Hitung</button>
+    <div class="hasil" id="hasilVolumeKubus"></div>
+  </section>
+
+  <!-- Volume Balok -->
+  <section>
+    <h2>Volume Balok</h2>
+    <input type="number" id="panjangB" placeholder="Panjang">
+    <input type="number" id="lebarB" placeholder="Lebar">
+    <input type="number" id="tinggiB" placeholder="Tinggi">
+    <button onclick="volumeBalok()">Hitung</button>
+    <div class="hasil" id="hasilVolumeBalok"></div>
+  </section>
+
+  <!-- Volume Tabung -->
+  <section>
+    <h2>Volume Tabung</h2>
+    <input type="number" id="jariT" placeholder="Jari-jari">
+    <input type="number" id="tinggiT" placeholder="Tinggi">
+    <button onclick="volumeTabung()">Hitung</button>
+    <div class="hasil" id="hasilVolumeTabung"></div>
+  </section>
+
+  <!-- Volume Kerucut -->
+  <section>
+    <h2>Volume Kerucut</h2>
+    <input type="number" id="jariK" placeholder="Jari-jari">
+    <input type="number" id="tinggiK" placeholder="Tinggi">
+    <button onclick="volumeKerucut()">Hitung</button>
+    <div class="hasil" id="hasilVolumeKerucut"></div>
+  </section>
+
+  <!-- Rumus -->
+  <section>
+    <h2>Rumus Matematika</h2>
+    <ul>
+      <li>Luas Persegi: sisi × sisi</li>
+      <li>Keliling Persegi: 4 × sisi</li>
+      <li>Luas Persegi Panjang: panjang × lebar</li>
+      <li>Keliling Persegi Panjang: 2 × (p + l)</li>
+      <li>Luas Segitiga: ½ × alas × tinggi</li>
+      <li>Keliling Segitiga: sisi1 + sisi2 + sisi3</li>
+      <li>Luas Lingkaran: π × r²</li>
+      <li>Keliling Lingkaran: 2 × π × r</li>
+      <li>Volume Kubus: sisi³</li>
+      <li>Volume Balok: p × l × t</li>
+      <li>Volume Tabung: π × r² × t</li>
+      <li>Volume Kerucut: ⅓ × π × r² × t</li>
+    </ul>
+  </section>
+
+  <script>
+    const PI = Math.PI;
+
+    function jumlah() {
+      const a = parseFloat(document.getElementById("pen1").value);
+      const b = parseFloat(document.getElementById("pen2").value);
+      document.getElementById("hasilPenjumlahan").innerText =
+        isNaN(a) || isNaN(b) ? "Masukkan dua angka!" : "Hasil: " + (a + b);
+    }
+
+    function hitungPersegiPanjang() {
+      const p = parseFloat(document.getElementById("panjang").value);
+      const l = parseFloat(document.getElementById("lebar").value);
+      if (!isNaN(p) && !isNaN(l)) {
+        const luas = p * l;
+        const kel = 2 * (p + l);
+        document.getElementById("hasilLuasKeliling").innerText = `Luas: ${luas}, Keliling: ${kel}`;
+      }
+    }
+
+    function hitungSegitiga() {
+      const a = parseFloat(document.getElementById("alas").value);
+      const t = parseFloat(document.getElementById("tinggi").value);
+      const s1 = parseFloat(document.getElementById("sisi1").value);
+      const s2 = parseFloat(document.getElementById("sisi2").value);
+      const s3 = parseFloat(document.getElementById("sisi3").value);
+      const luas = 0.5 * a * t;
+      const kel = s1 + s2 + s3;
+      document.getElementById("hasilSegitiga").innerText = `Luas: ${luas}, Keliling: ${kel}`;
+    }
+
+    function hitungLingkaran() {
+      const r = parseFloat(document.getElementById("jari").value);
+      const luas = PI * r * r;
+      const kel = 2 * PI * r;
+      document.getElementById("hasilLingkaran").innerText = `Luas: ${luas.toFixed(2)}, Keliling: ${kel.toFixed(2)}`;
+    }
+
+    function volumeKubus() {
+      const s = parseFloat(document.getElementById("sisi").value);
+      document.getElementById("hasilVolumeKubus").innerText = `Volume: ${s ** 3}`;
+    }
+
+    function volumeBalok() {
+      const p = parseFloat(document.getElementById("panjangB").value);
+      const l = parseFloat(document.getElementById("lebarB").value);
+      const t = parseFloat(document.getElementById("tinggiB").value);
+      document.getElementById("hasilVolumeBalok").innerText = `Volume: ${p * l * t}`;
+    }
+
+    function volumeTabung() {
+      const r = parseFloat(document.getElementById("jariT").value);
+      const t = parseFloat(document.getElementById("tinggiT").value);
+      const volume = PI * r * r * t;
+      document.getElementById("hasilVolumeTabung").innerText = `Volume: ${volume.toFixed(2)}`;
+    }
+
+    function volumeKerucut() {
+      const r = parseFloat(document.getElementById("jariK").value);
+      const t = parseFloat(document.getElementById("tinggiK").value);
+      const volume = (1 / 3) * PI * r * r * t;
+      document.getElementById("hasilVolumeKerucut").innerText = `Volume: ${volume.toFixed(2)}`;
+    }
+  </script>
+
+</body></html>
